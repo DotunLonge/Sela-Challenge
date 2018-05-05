@@ -8,13 +8,16 @@ import createMarkers from "./markers";
 
 class SimpleMap extends Component {
   static defaultProps = {
-    center: { lat: parseInt(Config.map.defaultLatitude,10), lng: parseInt(Config.map.defaultLongitude,10) },
-    zoom: parseInt(Config.map.defaultZoomLevel,10)
+    center: {
+      lat: parseInt(Config.map.defaultLatitude, 10),
+      lng: parseInt(Config.map.defaultLongitude, 10)
+    },
+    zoom: parseInt(Config.map.defaultZoomLevel, 10)
   };
 
   state = {
     projects: []
-  }
+  };
 
   apiIsLoaded = (map, maps) => {
     if (map) {
@@ -48,7 +51,6 @@ class SimpleMap extends Component {
   };
 
   createMapOptions(maps) {
-
     return {
       geocoderLocationOptions: {
         type: maps.GeocoderLocationType.APPROXIMATE
@@ -60,20 +62,17 @@ class SimpleMap extends Component {
     };
   }
 
-
-  componentWillReceiveProps(nextProps){
-    if(this.props !== nextProps){
-    
+  componentWillReceiveProps(nextProps) {
+    if (this.props !== nextProps) {
       this.setState({
         projects: nextProps.projects
-      })
+      });
     }
   }
 
   render() {
+    const markers = createMarkers(this.state.projects);
 
-    const markers  = createMarkers(this.state.projects);
-    
     return [
       <GoogleMapReact
         key={1}
@@ -88,9 +87,7 @@ class SimpleMap extends Component {
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps)}
       >
-      
-      {markers}
-      
+        {markers}
       </GoogleMapReact>,
       <TargetButton onClick={this.getMyLocation} key={2}>
         <img src={Target} alt="target" />
@@ -99,4 +96,4 @@ class SimpleMap extends Component {
   }
 }
 
-export default SimpleMap
+export default SimpleMap;

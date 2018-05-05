@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
   width: 100%;
   position: relative;
 
-  .failed{
+  .failed {
     background: whitesmoke;
     height: 100%;
     width: 100%;
     display: table;
-    h1{
+    h1 {
       text-align: center;
       margin: 0;
       display: table-cell;
@@ -100,6 +100,4 @@ export const Wrapper = styled.div`
     height: calc(100% - ${TopHeight});
     width: 100%;
   }
-
-  
 `;

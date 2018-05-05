@@ -3,7 +3,7 @@ import GeoSuggest from "react-geosuggest";
 import Marker from "../../assets/icons/marker.svg";
 import MapView from "./map-view";
 import { Wrapper } from "./map-section.style";
-import {connect } from "react-redux";
+import { connect } from "react-redux";
 
 class MapSection extends Component {
   state = {};
@@ -18,7 +18,7 @@ class MapSection extends Component {
   };
 
   render() {
-    const {projects,actionType} = this.props;
+    const { projects, actionType } = this.props;
 
     return (
       <Wrapper className="xs-12">
@@ -37,28 +37,27 @@ class MapSection extends Component {
         </div>
 
         <div className="xs-12" id="map-section">
-        
-        {
-          actionType !== "FETCH_PROJECTS_FAILED" ?
-          <MapView center={this.state.center} projects={projects} />
-        :
-          <div className="failed">
-            <h1> Nothing To Show. <p>Most Likely Server Issues</p> </h1>
-
-          </div>
-        }
-        
+          {actionType !== "FETCH_PROJECTS_FAILED" ? (
+            <MapView center={this.state.center} projects={projects} />
+          ) : (
+            <div className="failed">
+              <h1>
+                {" "}
+                Nothing To Show. <p>Most Likely Server Issues</p>{" "}
+              </h1>
+            </div>
+          )}
         </div>
       </Wrapper>
     );
   }
 }
 
-const mapStateToProps= state=>{
+const mapStateToProps = state => {
   return {
-    projects:  state.app.projects,
+    projects: state.app.projects,
     actionType: state.app.action.type
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(MapSection);
