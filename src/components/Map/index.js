@@ -42,8 +42,7 @@ class MapSection extends Component {
           ) : (
             <div className="failed">
               <h1>
-                {" "}
-                Nothing To Show. <p>Most Likely Server Issues</p>{" "}
+                Nothing To Show. <p>Most Likely Server Issues</p>
               </h1>
             </div>
           )}
