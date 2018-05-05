@@ -13,7 +13,6 @@ exports.list_all_contractors = function(req, res) {
 
 exports.create_a_contractor = function(req, res) {
   var projectContractor = new ProjectContractor(req.body);
-  console.log(req.body)
   projectContractor.save(function(err, Contractor) {
     if (err)
       res.send(err);

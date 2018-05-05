@@ -11,8 +11,8 @@ export default {
   useUrl,
   map: {
     googleMapsAPIKey: process.env.REACT_APP_MAP_API_KEY,
-    defaultLongitude: process.env.REACT_APP_MAP_DEFAULT_LNG,
-    defaultLatitude: process.env.REACT_APP_MAP_DEFAULT_LAT,
-    defaultZoomLevel: process.env.REACT_APP_MAP_DEFAULT_ZOOM
-  }
+    defaultLongitude: 131.044,
+    defaultLatitude:   -25.363,
+    defaultZoomLevel: 6
+}
 }
