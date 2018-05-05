@@ -1,8 +1,7 @@
 "use strict";
 var precacheConfig = [
-    ["/Sela/index.html", "b9df88db540e2484d06f221e0a272cea"],
-    ["/Sela/static/css/main.df2e8c33.css", "08741f36a51c2f03afb00f53a251f486"],
-    ["/Sela/static/js/main.f3aa80db.js", "a9a6132aad16c5ebb289c0a64de7c027"],
+    ["/Sela/index.html", "464e6a9eadaa2e502dfb5a92500fb3da"],
+    ["/Sela/static/js/main.99ddfe66.js", "e608999c07c3d87b5501794d0543d8c1"],
     [
       "/Sela/static/media/background.496f16a1.svg",
       "496f16a1c1dda194cdfbec00200789ef"

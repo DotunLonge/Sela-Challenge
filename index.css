@@ -1,0 +1,32 @@
+body,
+html,
+#root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Nunito;
+    overflow: auto;
+}
+
+.center-wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.center-wrapper>.center {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
