@@ -13,7 +13,7 @@ To run this project, clone the repo then in your terminal do the following:
  # For The Local Server
 - cd server
 - run "yarn install"
-- then run "nodemon server.js" when yarn install is completed.
+- then run yarn start when yarn install is completed.
 
 
 # For The Web Client
