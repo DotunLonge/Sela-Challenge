@@ -2,8 +2,10 @@
     "name": "sela",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://dotunlonge.github.io/Sela/",
     "dependencies": {
         "axios": "^0.18.0",
+        "gh-pages": "^1.1.0",
         "google-map-react": "^1.0.0",
         "lodash": "^4.17.10",
         "pagedraw-cli": "^0.3.1",
@@ -21,6 +23,8 @@
     "scripts": {
         "pretty-up": "npx onchange '**/*.js' -- npx prettier --write {{changed}}",
         "build": "react-scripts build && yarn run delete-maps",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "delete-maps": "yarn run delete-map-files && yarn run delete-references-to-map-files",
         "delete-map-files": "find ./build -name '*.map' -delete",
         "delete-references-to-map-files": "find ./build -regex '.*\\.\\(js\\|css\\)' -exec sed -i -E '\\/[\\*\\/]#\\ssourceMappingURL=main(\\.[0-9a-f]+)?\\.(css|js)\\.map(\\*\\/)?/g' {} +",
