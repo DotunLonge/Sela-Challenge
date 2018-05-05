@@ -3,7 +3,7 @@ let useUrl;
 if (process.env.NODE_ENV === "development") {
   useUrl = "http://localhost:7000";
 } else {
-  useUrl = "https://server-ndaoxlktcr.now.sh";
+  useUrl = "https://server-lzanfoopap.now.sh";
 }
 
 export default {
