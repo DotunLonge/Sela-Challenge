@@ -1,0 +1,11 @@
+<svg width="30" height="30" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Canvas" fill="none">
+<rect id="expand icon" width="30" height="30" fill="url(#pattern0)"/>
+</g>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0" transform="scale(0.015625)"/>
+</pattern>
+<image id="image0" data-name="icons8_Expand_Arrow_64px_3.png" width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABkElEQVRYCe2YXW7CMBAGcyCkHqRv8FJEL8BdaM9bVajpLNIGC9Efg4O9zod2tbGFnZ0JoJBh0EsGZEAGZEAGZEAGZEAGZEAGZEAGZEAGZEAGZEAGZOBsYBzHp/Mo1tHdvbPBO/lF7mOhD4P1TFrvbzf1zuID6WEbhZFA03vSeqac4pAlgSUr8kimYeNd1kYV3kzDr+SRTMPGq6x2WL0hP8k0zGqznwQavbzyTI3GsMmC9zezOowEei0LH0nCbPARJPwCv/b+i1RO1NzXgZ5++tiXhXeDnLAZCfTyWPiWJFSDb0FCdfiaEpqBryGhOfhEwprm7G6LMkXRO0Z2rfOD55B/VRqcTQJ7tw3vcmi0uAT2jAE/h4Rw8CUlhIUvISE8/D0SuoG/RUJ38DkSuoX/j4Tu4RMJW2Dt4SRlChtbThMc2Hjr67qqwF2TwPQU/cL7lQT12h0j06ent/M8yfGTt1KhvZRgf6aWAe8XIZHwwfGzzy+qAm6/CS+LghasDMiADMiADMiADMiADMiADLRg4BsFOz5/w2JaWAAAAABJRU5ErkJggg=="/>
+</defs>
+</svg>
