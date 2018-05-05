@@ -32,17 +32,3 @@ export const fetchAll = ()=>{
 
     }
 }
-
-
-export const sortByBudget = ()=>{
-    return { type: types.SORT_BY_BUDGET}
-}
-
-
-export const sortByStartDate = ()=>{
-    return { type: types.SORT_BY_START_DATE}
-}
-
-export const sortByEndDate = ()=>{
-    return { type: types.SORT_BY_END_DATE}
-}
