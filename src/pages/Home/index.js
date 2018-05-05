@@ -12,6 +12,13 @@ class Home extends Component {
         <Header backgroundSrc={HeroBackground} />
         <Map />
         <Projects />
+
+        <footer>
+          <div className="break"/>
+          <p id="text-below">
+          (c) Sela. 2018
+          </p>
+        </footer>
       </Wrapper>
     );
   }

@@ -2,10 +2,36 @@ import React from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
 import { bindActionCreators } from "redux";
-import { Wrapper } from "./project.style";
+import { Wrapper,Spinner } from "./project.style";
 import * as sortActions from "../../store/actionCreators/project";
 import _ from "lodash";
 import colors from "../../helpers/colors.json";
+
+const InProgress = ()=>{
+  return (
+    <Spinner>
+      <div className="spinner">
+        <div className="bounce1"></div>
+        <div className="bounce2"></div>
+        <div className="bounce3"></div>
+     
+        <div className="bounce2"></div>
+        <div className="bounce3"></div>
+        <div className="bounce2"></div>
+     
+      </div>
+  </Spinner>
+  )
+}
+
+const Failed = ()=>{
+  return (
+    <div>
+      <h3> No Projects To Show.</h3>
+    </div>
+  )
+}
+
 
 class Projects extends React.Component {
   state = {
@@ -17,6 +43,7 @@ class Projects extends React.Component {
   }
 
   componentDidMount() {
+
     this.setState({
       filterOptions: Object.keys(colors).map((colorKey, index) => {
         return (
@@ -92,7 +119,7 @@ class Projects extends React.Component {
             </li>
 
             <li className="xs-12 sm-3" id="sort-by">
-              <button>Sort By:</button>
+              <button id="sort-by">Sort By:</button>
             </li>
 
             <li className="xs-12 sm-2">
@@ -142,14 +169,19 @@ class Projects extends React.Component {
           </ul>
         </div>
 
-        <div className="xs-12">{projects}</div>
+        <div className="xs-12">
+          { projects }
+          { this.props.actionAttempt === "in-progress" && <InProgress/> }
+          { this.props.actionAttempt === "failed" && <Failed/> }
+        </div>
       </Wrapper>
     );
   }
 }
 const mapStateToProps = (state, props) => {
   return {
-    projects: state.app.projects
+    projects: state.app.projects,
+    actionAttempt: state.app.action.attempt
   };
 };
 

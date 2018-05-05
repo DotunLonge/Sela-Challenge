@@ -53,15 +53,16 @@ injectGlobal`
 `;
 const Header = styled.div`
   display: flex;
-  min-height: 100%;
+  height: 100%;
+  min-height: 500px;
 `;
 
 const Headerimage = styled.div`
   display: flex;
   flex-direction: column;
   background-image: url(${Background});
-  background-attachment: fixed;
   width: 100%;
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 `;
@@ -76,12 +77,13 @@ const Headerbackground0 = styled.div`
   flex-direction: column;
   background: rgba(0, 0, 0, 0.699999988079071);
   padding-bottom: 50px;
+  height: 100%;
   width: 100%;
 `;
 
 const Header00000 = styled.div`
   display: block;
-  margin: 40px auto 0;
+  // margin: 40px auto 0;
 `;
 
 const Headerlogo0 = styled.div`
@@ -89,13 +91,17 @@ const Headerlogo0 = styled.div`
   flex-direction: column;
   padding: 6px 30px;
   border: 2px solid rgba(255, 255, 255, 1);
+
   height: 50px;
-  line-height: 50px;
+width: 200px;
+line-height: 50px;
+margin: 40px auto 0;
 `;
 
 const Header0000000 = styled.div`
-  display: flex;
-  height: 100%;
+height: 100%;
+width: 100%;
+display: block;
 `;
 
 const Headertext0 = styled.div`
@@ -197,6 +203,8 @@ const Headerdownbutton0 = styled.a`
   background: rgba(45, 156, 219, 1);
   text-align: center;
   height: 78px;
+  width: 300px;
+  margin: auto;
   border: 0;
   cursor: pointer;
   text-decoration: none;

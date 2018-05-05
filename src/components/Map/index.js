@@ -2,8 +2,38 @@ import React, { Component } from "react";
 import GeoSuggest from "react-geosuggest";
 import Marker from "../../assets/icons/marker.svg";
 import MapView from "./map-view";
-import { Wrapper } from "./map-section.style";
+import { Wrapper,Spinner } from "./map-section.style";
 import { connect } from "react-redux";
+
+
+const Failed = ()=>{
+  return (
+    <div className="failed">
+    <h1>
+      Nothing To Show. <p>Most Likely Server Issues</p>
+    </h1>
+  </div>
+  )
+}
+
+const InProgress = ()=>{
+  return (
+    <div className="in-progress">
+     <Spinner >
+      <div className="spinner">
+        <div className="bounce1"></div>
+        <div className="bounce2"></div>
+        <div className="bounce3"></div>
+     
+        <div className="bounce2"></div>
+        <div className="bounce3"></div>
+        <div className="bounce2"></div>
+     
+      </div>
+  </Spinner>
+    </div>
+  )
+}
 
 class MapSection extends Component {
   state = {};
@@ -18,7 +48,7 @@ class MapSection extends Component {
   };
 
   render() {
-    const { projects, actionType } = this.props;
+    const { projects, actionAttempt } = this.props;
 
     return (
       <Wrapper className="xs-12">
@@ -37,15 +67,9 @@ class MapSection extends Component {
         </div>
 
         <div className="xs-12" id="map-section">
-          {actionType !== "FETCH_PROJECTS_FAILED" ? (
-            <MapView center={this.state.center} projects={projects} />
-          ) : (
-            <div className="failed">
-              <h1>
-                Nothing To Show. <p>Most Likely Server Issues</p>
-              </h1>
-            </div>
-          )}
+          <MapView center={this.state.center} projects={projects} />
+          { actionAttempt === "in-progress" && <InProgress/> }
+          { actionAttempt === "failed" && <Failed/> }
         </div>
       </Wrapper>
     );
@@ -55,7 +79,7 @@ class MapSection extends Component {
 const mapStateToProps = state => {
   return {
     projects: state.app.projects,
-    actionType: state.app.action.type
+    actionAttempt : state.app.action.attempt
   };
 };
 

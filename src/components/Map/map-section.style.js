@@ -1,17 +1,87 @@
 import styled from "styled-components";
 
 const TopHeight = "80px";
+
+export const Spinner = styled.div`
+  .spinner {
+    margin: 100px auto 0;
+    width: 280px;
+    text-align: center;
+  }
+
+  .spinner > div {
+    width: 18px;
+    height: 18px;
+    margin: 0 3.5px;
+    background-color: #C4C4C4;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  .spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+
+  .spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+
+  @-webkit-keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+      -webkit-transform: scale(0);
+    }
+    40% {
+      -webkit-transform: scale(1);
+    }
+  }
+
+  @keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    40% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+`;
+
+
 export const Wrapper = styled.div`
   background: grey;
   height: 100%;
   width: 100%;
   position: relative;
 
-  .failed {
-    background: whitesmoke;
-    height: 100%;
-    width: 100%;
+  .failed, .in-progress {
     display: table;
+    z-index: 1;
+    opacity: .85;
+    background: whitesmoke;
+    margin-top: ${TopHeight};
+    height: calc(100% - ${TopHeight});
+    width: 100%;
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    display: table;
+
+    > div{
+      display: table-cell;
+      vertical-align: middle;
+    }
+
     h1 {
       text-align: center;
       margin: 0;
