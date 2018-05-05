@@ -3,7 +3,7 @@ let useUrl;
 if (process.env.NODE_ENV === "development") {
   useUrl = "http://localhost:7000";
 } else {
-  useUrl = "http://sela.fr.openode.io";
+  useUrl = "https://server-ndaoxlktcr.now.sh";
 }
 
 export default {

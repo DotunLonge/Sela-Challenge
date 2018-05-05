@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App]
 
 It uses redux,react,node and mongodb [mlab].
 
+Production:
+server API URL: https://server-ndaoxlktcr.now.sh
+frontend Client URL : https://build-edjdnhbrbz.now.sh
+
 ## Setup
 
 To run this project, clone the repo then in your terminal do the following:
