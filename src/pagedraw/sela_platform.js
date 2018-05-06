@@ -74,7 +74,7 @@ function render() {
                     <div className="sela_platform-0-0-0-1-1-0-0-0">
                       <div className="sela_platform-the_people_of_ikorodu_have_long_sought_for_a_solution_to_the_perennial_water_crisis_plaguing_the_community_help_came_when_community_members_took_action_and_decided_to_solve_the_problem_read_more-0">
                         <div>
-                          The people of Ikorodu have long sought for a solution{" "}
+                          The people of Ikorodu have long sought for a solution
                         </div>
                         <div>
                           {
@@ -175,7 +175,7 @@ function render() {
                     <div className="sela_platform-0-1-0-1-1-0-0-0">
                       <div className="sela_platform-education_remains_the_only_sure_way_to_guarantee_the_future_of_the_next_generation_this_project_is_expected_to_change_the_poor_educational_facilities_that_have_made_it_difficult_for_students_read_more-0">
                         <div>
-                          Education remains the only sure way to guarantee{" "}
+                          Education remains the only sure way to guarantee
                         </div>
                         <div>
                           {"the future of the next generation. This project is"}
@@ -289,7 +289,7 @@ function render() {
                       <div className="sela_platform-this_project_involves_the_rebuilding_of_the_tema_bridge_which_was_destroyed_by_erosion_in_2">
                         <div>
                           This project involves the rebuilding of the Tema
-                          bridge{" "}
+                          bridge
                         </div>
                         <div>
                           {

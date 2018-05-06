@@ -237,7 +237,7 @@ function render() {
                 <Header_paragraph_0>
                   <div>
                     The Sela Platform enables stakeholders share real time
-                    information{" "}
+                    information
                   </div>
                   <div>
                     on the state of infrastructure projects to ensure

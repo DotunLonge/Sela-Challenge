@@ -86,7 +86,7 @@ class Project extends Component {
     const list = this.state.formObject.contractors.map((contractor, index) => {
       return (
         <li key={index}>
-          {" "}
+          
           Name: {contractor.name} , avatar: {contractor.avatarUrl}
         </li>
       );
@@ -148,7 +148,7 @@ class Project extends Component {
           <div className="form-control">
             <label>
               Project Picture: {this.state.formObject.projectPicture}
-            </label>{" "}
+            </label>
             <br />
             <input
               type="text"
@@ -170,7 +170,7 @@ class Project extends Component {
 
           <div className="form-control">
             <label>
-              Completion Percentage:{" "}
+              Completion Percentage:
               {this.state.formObject.completionPercentage}
             </label>
             <br />
@@ -196,12 +196,12 @@ class Project extends Component {
               <option value="Not Initiated"> Not Initiated </option>
               <option value="Completed"> Defaulted </option>
               <option value="On track to be defaulted">
-                {" "}
-                On track to be defaulted{" "}
+                
+                On track to be defaulted
               </option>
               <option value="On track to be completed">
-                {" "}
-                On track to be completed{" "}
+                
+                On track to be completed
               </option>
             </select>
           </div>
@@ -250,7 +250,7 @@ class Project extends Component {
         </form>
 
         <p style={{ color: this.props.attempt === "failed" ? "red" : "blue" }}>
-          {" "}
+          
           {this.props.message}
         </p>
       </div>

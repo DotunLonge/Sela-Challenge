@@ -104,7 +104,7 @@ export const Wrapper = styled.div`
   }
 
   height: 100%;
-  margin: 2% 0;
+  margin: 1% 0;
 
   .inner {
     overflow: auto;

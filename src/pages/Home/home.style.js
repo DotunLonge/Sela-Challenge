@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default styled.div`
-  height: 100%;
+  height: auto;
   overflow: auto;
   footer {
     padding: 20px 5%;
@@ -10,7 +10,7 @@ export default styled.div`
       display: block;
       margin: 10px 0;
       width: 100%;
-      border: 0.5px solid rgba(167, 167, 167, 0.3);
+      border: 1px solid rgba(167, 167, 167, 0.3);
     }
 
     #text-below {

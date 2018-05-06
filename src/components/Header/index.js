@@ -54,7 +54,6 @@ injectGlobal`
 const Header = styled.div`
   display: flex;
   height: 100%;
-  min-height: 500px;
 `;
 
 const Headerimage = styled.div`
@@ -69,38 +68,34 @@ const Headerimage = styled.div`
 
 const Header000 = styled.div`
   display: flex;
-  height: 100%;
+  height: auto;
 `;
 
 const Headerbackground0 = styled.div`
   display: flex;
   flex-direction: column;
   background: rgba(0, 0, 0, 0.699999988079071);
-  padding-bottom: 50px;
   height: 100%;
   width: 100%;
+  min-height:100vh;
 `;
 
 const Header00000 = styled.div`
   display: block;
-  // margin: 40px auto 0;
 `;
 
 const Headerlogo0 = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 6px 30px;
-  border: 2px solid rgba(255, 255, 255, 1);
-
-  height: 50px;
-width: 200px;
-line-height: 50px;
-margin: 40px auto 0;
+display: flex;
+flex-direction: column;
+padding: 8px 30px;
+border: 1.5px solid rgba(255,255,255,1);
+width: 150px;
+margin: 5vh auto 0;
 `;
 
 const Header0000000 = styled.div`
-height: 100%;
-width: 100%;
+height: auto;
+width: auto;
 display: block;
 `;
 
@@ -108,17 +103,22 @@ const Headertext0 = styled.div`
   flex-shrink: 0;
   font-family: "Nunito", sans-serif;
   color: rgba(255, 255, 255, 1);
-  font-size: 30px;
-  line-height: 34px;
-  letter-spacing: 0px;
-  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  font-weight: 400;
   font-style: normal;
   text-decoration: none;
   text-align: center;
 `;
 
 const Header00001 = styled.div`
-  margin: 10% 0 0;
+@media(max-width: 767px){
+  margin: 10vh 0 0;
+}
+
+@media(min-width: 768px){
+  margin: 20vh 0 0;
+}
 `;
 
 const Headerheading0 = styled.div`
@@ -131,8 +131,8 @@ const Headerheading0 = styled.div`
   text-decoration: none;
   text-align: center;
   h3 {
-    font-weight: 300;
-    font-size: 2.75em;
+    font-weight: 400;
+    font-size: 2.5em;
     line-height: 60px;
     margin: 0;
     padding: 0 20%;
@@ -140,7 +140,7 @@ const Headerheading0 = styled.div`
 
   @media (min-width: 1024px) {
     h3 {
-      padding: 0 23%;
+      padding: 0 26%;
     }
   }
 
@@ -164,19 +164,18 @@ const Header00002 = styled.div`
 
 const Headerparagraph0 = styled.div`
   p {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans",sans-serif;
     font-weight: 300;
     text-align: center;
-
-    line-height: 37px;
+    line-height: 30px;
     font-weight: 300;
     color: #eee;
-    font-size: 1.175em;
+    font-size: 1.14em;
   }
 
   @media (min-width: 1024px) {
     p {
-      padding: 0 23%;
+      padding: 0 28%;
     }
   }
 
@@ -188,41 +187,48 @@ const Headerparagraph0 = styled.div`
   @media (max-width: 600px) {
     p {
       padding: 0 5%;
-      line-height: 37px;
       font-size: 0.9em;
     }
   }
 `;
 
 const Header00003 = styled.div`
-  margin: auto;
+text-align: center;
+@media(max-width: 767px){
+  margin: 5vh auto;
+}
+
+@media(min-width: 768px){
+  margin: 15vh auto 5vh;
+}
+
 `;
 
 const Headerdownbutton0 = styled.a`
   border-radius: 50px;
   background: rgba(45, 156, 219, 1);
   text-align: center;
+  display: inline-block;
   height: 78px;
-  width: 300px;
+  min-width: 250px;
   margin: auto;
   border: 0;
   cursor: pointer;
   text-decoration: none;
-  display: block;
 `;
 
 const Headerbuttontext0 = styled.span`
-  font-family: "Nunito", sans-serif;
-  color: rgba(255, 255, 255, 1);
-  font-size: 20px;
-  line-height: 34px;
-  letter-spacing: 0px;
-  font-weight: 300;
-  font-style: normal;
-  text-decoration: none;
-  text-align: center;
-  padding: 12px 40px 0;
-  display: block;
+font-family: "Nunito",sans-serif;
+color: rgba(255,255,255,1);
+font-size: 20px;
+line-height: 34px;
+letter-spacing: 0.3px;
+font-weight: 400;
+font-style: normal;
+text-decoration: none;
+text-align: center;
+padding: 12px 5vw 0;
+display: block;
 `;
 
 const Headerchevrondown3 = styled.img`

@@ -93,10 +93,10 @@ export const Wrapper = styled.div`
     }
   }
   #search-section {
-    height: ${TopHeight};
+    min-height: ${TopHeight};
 
     #text-column {
-      height: 100%;
+      height: ${TopHeight};
       display: table;
       text-align: center;
 
@@ -167,7 +167,7 @@ export const Wrapper = styled.div`
   }
 
   #map-section {
-    height: calc(100% - ${TopHeight});
+    height: calc(100vh - ${TopHeight});
     width: 100%;
   }
 `;

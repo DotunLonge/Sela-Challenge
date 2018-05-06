@@ -49,19 +49,18 @@ export default ({ project }) => {
 
         <div className="xs-12 md-7 text-side">
           <h3>{project.name}</h3>
-          <div className="location xs-6 top">
+          <div className="location xs-6 lg-5 top">
             <img src={location} alt="location" />
-            <span>{project.location.name}</span>{" "}
+            <span>{project.location.name}</span>
           </div>
-          <div className="budget xs-6 top">
-            {" "}
+          <div className="budget xs-6 lg-7 top">
             <img src={budget} alt="budget" />
-            <span>Budget: {formatter(project.budget)}</span>{" "}
+            <span>Budget: {formatter(project.budget)}</span>
           </div>
 
           <div className="xs-12">
             <p className="description">
-              {project.description} ...<Link to="#">Read more</Link>{" "}
+              {project.description} ...<Link to="#">Read more</Link>
             </p>
           </div>
 
@@ -71,8 +70,7 @@ export default ({ project }) => {
             <h4>Contractors</h4>
             {contractors}
             <Link to="#" onClick={alertOtherInfo}>
-              {" "}
-              View more details{" "}
+              View more details
             </Link>
           </div>
         </div>
