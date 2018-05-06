@@ -68,7 +68,7 @@ export const Wrapper = styled.div`
     opacity: .85;
     background: whitesmoke;
     margin-top: ${TopHeight};
-    height: calc(100% - ${TopHeight});
+    height: calc(100vh - ${TopHeight});
     width: 100%;
     position: absolute;
     top:0;
