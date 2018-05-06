@@ -13,6 +13,5 @@ export default {
     defaultLongitude: 6.465422,
     defaultLatitude: 3.406448,
     defaultZoomLevel: 6 
-  },
-  projectsLimitedResultAmount: process.env.REACT_APP_PROJECT_LIMITED_RESULT_AMOUNT
+  }
 };

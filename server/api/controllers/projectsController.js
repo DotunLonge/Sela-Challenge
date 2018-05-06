@@ -3,25 +3,26 @@
 var mongoose = require('mongoose'),
   Project = mongoose.model('Projects');
 
-
 exports.list_projects = function(req, res) {
     Project.find({ }, function(err, project) {
     if (err)
       res.send(err);
       setTimeout(()=>{
         res.json(project);      
-      }, 1000)
+      }, 500)
   }).limit(parseInt(req.params.amount,10));
 };
 
-exports.list_all_projects = function(req, res) {
+exports.list_all_project_data_for_map = function(req, res) {
     Project.find({}, function(err, project) {
     if (err)
       res.send(err);
       setTimeout(()=>{
-        res.json(project);      
-      }, 1000)
-  });
+        res.json(
+          project
+        );      
+      }, 500)
+  }).select("keyword location projectStatus")
 };
 
 exports.create_a_project = function(req, res) {

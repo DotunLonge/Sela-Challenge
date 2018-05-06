@@ -4,7 +4,7 @@ module.exports = function(app) {
 
   // todoList Routes
   app.route('/projects')
-    .get(projects.list_all_projects)
+    .get(projects.list_all_project_data_for_map)
     .post(projects.create_a_project);
 
   app.route("/projects/:amount")

@@ -20,26 +20,40 @@ export const add = obj => {
   };
 };
 
-export const fetch = () => {
+export const fetch = (amount = 4) => {
 
   return dispatch => {
-    dispatch({ type: types.FETCH_ALL_PROJECTS_IN_PROGRESS });
+    dispatch({ type: types.FETCH_PROJECTS_IN_PROGRESS });
+
+    axios
+      .get(endpoints.projects  + amount)
+
+      .then(response =>
+        dispatch({
+          type: types.FETCH_PROJECTS_SUCCESSFUL,
+          projects: response.data
+        })
+      )
+
+      .catch(response => dispatch({ type: types.FETCH_PROJECTS_FAILED }));
+  };
+};
+
+export const fetchForMaps = () => {
+
+  return dispatch => {
+    dispatch({ type: types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_IN_PROGRESS });
 
     axios
       .get(endpoints.projects)
 
       .then(response =>
         dispatch({
-          type: types.FETCH_ALL_PROJECTS_SUCCESSFUL,
+          type: types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_SUCCESSFUL,
           projects: response.data
         })
       )
 
-      .catch(response => dispatch({ type: types.FETCH_ALL_PROJECTS_FAILED }));
+      .catch(response => dispatch({ type: types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_FAILED }));
   };
 };
-
-
-export const limitedFetch = ( amount )=> {
-  return { type: "LIMITED_FETCH_IN_PROGRESS", amount }
-}

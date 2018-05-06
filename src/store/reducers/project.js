@@ -1,44 +1,107 @@
 import types from "../actionTypes/project";
 
 const obj = {
-  action: {
-    type: "",
-    attempt: "",
-    message: ""
+  mapSection: {
+    action: {
+      type: "",
+      attempt: "",
+      message: ""
+    },
+    projectDataForMaps: []
   },
-  projects: []
+  projectSection:{
+    projects: [],
+    action: {
+      type: "",
+      attempt: "",
+      message: ""
+    },
+
+  } 
 };
 
 export default (state = obj, payload) => {
   switch (payload.type) {
 
-    case types.FETCH_ALL_PROJECTS_IN_PROGRESS:
+    case types.FETCH_PROJECTS_IN_PROGRESS:
       return {
         ...state,
+        projectSection: {
+          ...state.projectSection,
         action: {
-          type: types.FETCH_ALL_PROJECTS_IN_PROGRESS,
+          type: types.FETCH_PROJECTS_IN_PROGRESS,
           attempt: "in-progress"
         }
+      }
       };
 
-    case types.FETCH_ALL_PROJECTS_SUCCESSFUL:
+    case types.FETCH_PROJECTS_SUCCESSFUL:
       return {
         ...state,
+        projectSection: {
+          ...state.projectSection,
+       
         action: {
-          type: types.FETCH_ALL_PROJECTS_SUCCESSFUL,
+          type: types.FETCH_PROJECTS_SUCCESSFUL,
           attempt: "successful"
         },
         projects: payload.projects
+      }
       };
 
-    case types.FETCH_ALL_PROJECTS_FAILED:
+    case types.FETCH_PROJECTS_FAILED:
       return {
         ...state,
+        projectSection: {
+          ...state.projectSection,
+       
         action: {
-          type: types.FETCH_ALL_PROJECTS_FAILED,
+          type: types.FETCH_PROJECTS_FAILED,
           attempt: "failed"
         },
         projects: []
+      }
+      };
+
+    case types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_IN_PROGRESS:
+      return {
+        ...state,
+        mapSection: {
+          ...state.mapSection,
+       
+        action: {
+          type: types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_IN_PROGRESS,
+          attempt: "in-progress"
+        }
+      }
+      };
+
+    case types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_SUCCESSFUL:
+      return {
+        ...state,
+        mapSection: {
+          ...state.mapSection,
+       
+        action: {
+          type: types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_SUCCESSFUL,
+          attempt: "successful"
+        },
+        projectDataForMaps: payload.projects
+      }
+      };
+
+    case types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_FAILED:
+      return {
+        ...state,
+        mapSection: {
+          ...state.mapSection,
+       
+        action: {
+          type: types.FETCH_ALL_PROJECTS_DATA_FOR_MAPS_FAILED,
+          attempt: "failed"
+        },
+        projectDataForMaps: []
+      }
       };
 
       case types.ADD_PROJECT_IN_PROGRESS:

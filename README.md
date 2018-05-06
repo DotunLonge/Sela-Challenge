@@ -3,8 +3,8 @@ This project was bootstrapped with [Create React App]
 It uses redux,react,node and mongodb [mlab].
 
 Production:
-server API URL: https://server-bxpnvanutb.now.sh
-frontend Client URL : https://build-auvmcmlbxh.now.sh
+server API URL: https://server-ifiqgpqmbw.now.sh
+frontend Client URL: https://build-vzfywjlpru.now.sh
 
 ## Setup
 

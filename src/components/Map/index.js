@@ -4,7 +4,7 @@ import Marker from "../../assets/icons/marker.svg";
 import MapView from "./map-view";
 import { Wrapper,Spinner } from "./map-section.style";
 import { connect } from "react-redux";
-
+import { fetchForMaps } from "../../store/actionCreators/project";
 
 const Failed = ()=>{
   return (
@@ -37,6 +37,10 @@ const InProgress = ()=>{
 
 class MapSection extends Component {
   state = {};
+
+  componentWillMount(){
+    this.props.dispatch( fetchForMaps() )
+  }
 
   onSuggestSelect = suggest => {
     if (suggest) {
@@ -78,8 +82,8 @@ class MapSection extends Component {
 
 const mapStateToProps = state => {
   return {
-    projects: state.app.projects,
-    actionAttempt : state.app.action.attempt
+    projects: state.app.mapSection.projectDataForMaps,
+    actionAttempt : state.app.mapSection.action.attempt
   };
 };
 
