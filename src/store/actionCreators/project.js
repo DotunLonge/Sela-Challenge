@@ -8,7 +8,6 @@ export const add = obj => {
 
     axios
       .post(endpoints.projects, obj)
-
       .then(res => {
         dispatch({ type: types.ADD_PROJECT_SUCCESSFUL, message: res.message });
       })
@@ -21,20 +20,26 @@ export const add = obj => {
   };
 };
 
-export const fetchAll = () => {
+export const fetch = () => {
+
   return dispatch => {
-    dispatch({ type: types.FETCH_PROJECTS_IN_PROGRESS });
+    dispatch({ type: types.FETCH_ALL_PROJECTS_IN_PROGRESS });
 
     axios
       .get(endpoints.projects)
 
       .then(response =>
         dispatch({
-          type: types.FETCH_PROJECTS_SUCCESSFUL,
+          type: types.FETCH_ALL_PROJECTS_SUCCESSFUL,
           projects: response.data
         })
       )
 
-      .catch(response => dispatch({ type: types.FETCH_PROJECTS_FAILED }));
+      .catch(response => dispatch({ type: types.FETCH_ALL_PROJECTS_FAILED }));
   };
 };
+
+
+export const limitedFetch = ( amount )=> {
+  return { type: "LIMITED_FETCH_IN_PROGRESS", amount }
+}

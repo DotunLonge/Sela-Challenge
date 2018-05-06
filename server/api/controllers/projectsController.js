@@ -3,6 +3,17 @@
 var mongoose = require('mongoose'),
   Project = mongoose.model('Projects');
 
+
+exports.list_projects = function(req, res) {
+    Project.find({ }, function(err, project) {
+    if (err)
+      res.send(err);
+      setTimeout(()=>{
+        res.json(project);      
+      }, 1000)
+  }).limit(parseInt(req.params.amount,10));
+};
+
 exports.list_all_projects = function(req, res) {
     Project.find({}, function(err, project) {
     if (err)

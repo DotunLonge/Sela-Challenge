@@ -1,5 +1,5 @@
 import config from "./config";
 
 export default {
-  projects: config.useUrl + "/projects"
+  projects: config.useUrl + "/projects/"
 };

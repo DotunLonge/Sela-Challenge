@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
-import { bindActionCreators } from "redux";
 import { Wrapper,Spinner } from "./project.style";
-import * as sortActions from "../../store/actionCreators/project";
 import _ from "lodash";
 import colors from "../../helpers/colors.json";
+import {limitedFetch} from "../../store/actionCreators/project";
+import config from "../../config";
 
 const InProgress = ()=>{
   return (
@@ -39,25 +39,9 @@ class Projects extends React.Component {
     fetchedTriggered: false
   };
 
-  componentWillMount() {
-    this.props.actions.fetchAll();
+  componentWillMount(){
+    this.props.dispatch(limitedFetch( config.projectsLimitedResultAmount));   
   }
-
-  isBottom(el) {
-    return el.getBoundingClientRect().bottom <= window.innerHeight;
-  }
-  
-  trackScrolling = () => {
-    if(this.props.actionAttempt !== "in-progress"){
-      const wrappedElement = document.getElementById('wrapper'); 
-      if (this.isBottom(wrappedElement) && this.state.fetchedTriggered === false ) {
-        this.props.actions.fetchAll();
-        this.setState({ fetchedTriggered: true })
-      }else{
-        this.setState({ fetchedTriggered: false})
-      }
-    }
-  };
 
   componentDidMount() {
  
@@ -111,6 +95,21 @@ class Projects extends React.Component {
     });
   };
 
+  isBottom(el) {
+    return el.getBoundingClientRect().bottom <= window.innerHeight;
+  }
+  
+  trackScrolling = () => {
+    if(this.props.actionAttempt !== "in-progress"){
+      const wrappedElement = document.getElementById('wrapper'); 
+      if (this.isBottom(wrappedElement) && this.state.fetchedTriggered === false ) {
+        this.props.dispatch ( limitedFetch(this.props.next) )
+        this.setState({ fetchedTriggered: true })
+      }else{
+        this.setState({ fetchedTriggered: false})
+      }
+    }
+  };
 
   componentWillUnmount(){
     document.removeEventListener('scroll', this.trackScrolling);
@@ -207,15 +206,11 @@ class Projects extends React.Component {
 }
 const mapStateToProps = (state, props) => {
   return {
-    projects: state.app.projects,
-    actionAttempt: state.app.action.attempt
+    projects: state.app.limited_projects,
+    actionAttempt: state.app.action.attempt,
+    amount: state.app.limited_projects.length + config.projectsLimitedResultAmount
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators(sortActions, dispatch)
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Projects);
+export default connect(mapStateToProps)(Projects);

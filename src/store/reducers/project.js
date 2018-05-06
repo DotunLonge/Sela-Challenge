@@ -11,36 +11,37 @@ const obj = {
 
 export default (state = obj, payload) => {
   switch (payload.type) {
-    case types.FETCH_PROJECTS_IN_PROGRESS:
+
+    case types.FETCH_ALL_PROJECTS_IN_PROGRESS:
       return {
         ...state,
         action: {
-          type: types.FETCH_PROJECTS_IN_PROGRESS,
+          type: types.FETCH_ALL_PROJECTS_IN_PROGRESS,
           attempt: "in-progress"
         }
       };
 
-    case types.FETCH_PROJECTS_SUCCESSFUL:
+    case types.FETCH_ALL_PROJECTS_SUCCESSFUL:
       return {
         ...state,
         action: {
-          type: types.FETCH_PROJECTS_SUCCESSFUL,
+          type: types.FETCH_ALL_PROJECTS_SUCCESSFUL,
           attempt: "successful"
         },
         projects: payload.projects
       };
 
-    case types.FETCH_PROJECTS_FAILED:
+    case types.FETCH_ALL_PROJECTS_FAILED:
       return {
         ...state,
         action: {
-          type: types.FETCH_PROJECTS_FAILED,
+          type: types.FETCH_ALL_PROJECTS_FAILED,
           attempt: "failed"
         },
         projects: []
       };
 
-    case types.ADD_PROJECT_IN_PROGRESS:
+      case types.ADD_PROJECT_IN_PROGRESS:
       return {
         ...state,
         action: {

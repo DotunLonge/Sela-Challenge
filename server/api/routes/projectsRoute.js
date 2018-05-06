@@ -7,4 +7,7 @@ module.exports = function(app) {
     .get(projects.list_all_projects)
     .post(projects.create_a_project);
 
+  app.route("/projects/:amount")
+    .get(projects.list_projects)
+  
 }

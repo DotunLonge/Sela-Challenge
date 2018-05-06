@@ -4,8 +4,15 @@ import Wrapper from "./home.style";
 import Header from "../../components/Header";
 import HeroBackground from "../../assets/background.svg";
 import Projects from "../../components/Projects";
+import {connect} from 'react-redux';
+import {fetch} from "../../store/actionCreators/project";
 
 class Home extends Component {
+
+  componentWillMount(){
+    this.props.dispatch(fetch());
+  }
+  
   render() {
     return (
       <Wrapper className="xs-12">
@@ -24,4 +31,6 @@ class Home extends Component {
   }
 }
 
-export default Home;
+
+
+export default connect()(Home);

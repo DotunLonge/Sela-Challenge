@@ -1,9 +1,9 @@
 let useUrl;
 
 if (process.env.NODE_ENV === "development") {
-  useUrl = "http://localhost:7000";
+  useUrl = process.env.REACT_APP_DEV_SERVER;
 } else {
-  useUrl = "https://server-xbnjsrrrsr.now.sh";
+  useUrl =  process.env.REACT_APP_PROD_SERVER;
 }
 
 export default {
@@ -12,6 +12,7 @@ export default {
     googleMapsAPIKey: process.env.REACT_APP_MAP_API_KEY,
     defaultLongitude: 6.465422,
     defaultLatitude: 3.406448,
-    defaultZoomLevel: 6
-  }
+    defaultZoomLevel: 6 
+  },
+  projectsLimitedResultAmount: process.env.REACT_APP_PROJECT_LIMITED_RESULT_AMOUNT
 };
