@@ -76,9 +76,25 @@ class Projects extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
-      this.setState({
-        projects: nextProps.projects
-      });
+      let projects;
+      if(this.state.filtered){
+        const filtered = _.filter(nextProps.projects, [this.state.filterName, this.state.filterValue]);
+        if(this.state.sorted ){
+          projects = _.orderBy(this.state.projects, [this.state.sortName], [this.state.sortValue]);
+        }else{
+          projects = filtered;
+        }
+        this.setState({ projects })
+      }else{
+        if(this.state.sorted ){
+          projects = _.orderBy(nextProps.projects, [this.state.sortName], [this.state.sortValue]);
+        }else{
+          projects = nextProps.projects;
+        }
+        this.setState({
+          projects
+        });
+      }
     }
   }
 
@@ -88,7 +104,11 @@ class Projects extends React.Component {
     const sorted = _.orderBy(this.state.projects, [name], [value]);
 
     this.setState({
-      projects: sorted
+      projects: sorted,
+      sorted: true,
+      sortName: name,
+      sortValue: value
+
     });
   };
 
@@ -102,12 +122,17 @@ class Projects extends React.Component {
 
     if (value === "all") {
       return this.setState({
-        projects: this.props.projects
+        projects: this.props.projects,
+        filtered: false
       });
     }
     const filtered = _.filter(this.props.projects, [name, value]);
+
     this.setState({
-      projects: filtered
+      projects: filtered,
+      filtered: true,
+      filterName: name,
+      filterValue: value
     });
   };
 

@@ -4,7 +4,7 @@ It uses redux,react,node and mongodb [mlab].
 
 Production:
 server API URL: https://server-ifiqgpqmbw.now.sh
-frontend Client URL: https://build-vzfywjlpru.now.sh
+frontend Client URL: https://build-aaznblqcyy.now.sh
 
 ## Setup
 
