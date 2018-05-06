@@ -3,8 +3,9 @@ html,
 #root {
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: auto;
+    min-height: 100vh;
     font-family: Nunito;
     overflow: auto;
 }
@@ -13,17 +14,13 @@ html,
     display: table;
     height: 100%;
     width: 100%;
+    min-height: inherit;
 }
 
 .center-wrapper>.center {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-}
-
-html,
-body {
-    overflow: hidden;
 }
 
 * {

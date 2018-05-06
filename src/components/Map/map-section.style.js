@@ -93,6 +93,7 @@ export const Wrapper = styled.div`
     }
   }
   #search-section {
+
     min-height: ${TopHeight};
 
     #text-column {
@@ -130,9 +131,9 @@ export const Wrapper = styled.div`
       }
       input {
         width: 100%;
-        height: 80px;
+        height: ${TopHeight};
         border: 0;
-        padding: 0 0px 0 80px;
+        padding: 0 0px 0 ${TopHeight};
         font-style: italic;
         font-weight: 600;
         line-height: normal;
@@ -168,6 +169,23 @@ export const Wrapper = styled.div`
 
   #map-section {
     height: calc(100vh - ${TopHeight});
-    width: 100%;
+  }
+
+
+  @media(min-width: 767px){
+
+    #search-section{
+      min-height: ${TopHeight};
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 1;
+  
+    }
+
+    #map-section {
+      margin-top: ${TopHeight};
+    }
   }
 `;

@@ -35,15 +35,34 @@ const Failed = ()=>{
 
 class Projects extends React.Component {
   state = {
-    projects: []
+    projects: [],
+    fetchedTriggered: false
   };
 
   componentWillMount() {
     this.props.actions.fetchAll();
   }
 
-  componentDidMount() {
+  isBottom(el) {
+    return el.getBoundingClientRect().bottom <= window.innerHeight;
+  }
+  
+  trackScrolling = () => {
+    if(this.props.actionAttempt !== "in-progress"){
+      const wrappedElement = document.getElementById('wrapper'); 
+      if (this.isBottom(wrappedElement) && this.state.fetchedTriggered === false ) {
+        this.props.actions.fetchAll();
+        this.setState({ fetchedTriggered: true })
+      }else{
+        this.setState({ fetchedTriggered: false})
+      }
+    }
+  };
 
+  componentDidMount() {
+ 
+    document.addEventListener('scroll', this.trackScrolling);
+ 
     this.setState({
       filterOptions: Object.keys(colors).map((colorKey, index) => {
         return (
@@ -92,13 +111,18 @@ class Projects extends React.Component {
     });
   };
 
+
+  componentWillUnmount(){
+    document.removeEventListener('scroll', this.trackScrolling);
+  }
+
   render() {
     const projects = this.state.projects.map((project, index) => {
       return <Card project={project} key={index} />;
     });
 
     return (
-      <Wrapper>
+      <Wrapper id="wrapper">
         <div className="xs-12 " id="projects">
           <h3>All Projects</h3>
         </div>
@@ -171,8 +195,11 @@ class Projects extends React.Component {
 
         <div className="xs-12">
           { projects }
-          { this.props.actionAttempt === "in-progress" && <InProgress/> }
           { this.props.actionAttempt === "failed" && <Failed/> }
+        </div>
+
+        <div className="xs-12">
+          { this.props.actionAttempt === "in-progress" && <InProgress/> }
         </div>
       </Wrapper>
     );

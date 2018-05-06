@@ -7,7 +7,9 @@ exports.list_all_projects = function(req, res) {
     Project.find({}, function(err, project) {
     if (err)
       res.send(err);
-      res.json(project);      
+      setTimeout(()=>{
+        res.json(project);      
+      }, 1000)
   });
 };
 

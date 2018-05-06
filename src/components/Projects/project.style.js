@@ -3,8 +3,10 @@ import styled from "styled-components";
 import Chevron from "../../assets/icons/chevron.svg";
 
 export const Spinner = styled.div`
+
+  margin: 100px auto;
   .spinner {
-    margin: 100px auto 0;
+    margin: auto;
     width: 280px;
     text-align: center;
   }
