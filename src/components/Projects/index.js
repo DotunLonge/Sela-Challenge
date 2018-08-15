@@ -2,36 +2,34 @@ import React from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
 import { bindActionCreators } from "redux";
-import { Wrapper,Spinner } from "./project.style";
+import { Wrapper, Spinner } from "./project.style";
 import * as sortActions from "../../store/actionCreators/project";
 import _ from "lodash";
 import colors from "../../helpers/colors.json";
 
-const InProgress = ()=>{
+const InProgress = () => {
   return (
     <Spinner>
       <div className="spinner">
-        <div className="bounce1"></div>
-        <div className="bounce2"></div>
-        <div className="bounce3"></div>
-     
-        <div className="bounce2"></div>
-        <div className="bounce3"></div>
-        <div className="bounce2"></div>
-     
-      </div>
-  </Spinner>
-  )
-}
+        <div className="bounce1" />
+        <div className="bounce2" />
+        <div className="bounce3" />
 
-const Failed = ()=>{
+        <div className="bounce2" />
+        <div className="bounce3" />
+        <div className="bounce2" />
+      </div>
+    </Spinner>
+  );
+};
+
+const Failed = () => {
   return (
     <div>
       <h3> No Projects To Show.</h3>
     </div>
-  )
-}
-
+  );
+};
 
 class Projects extends React.Component {
   state = {
@@ -43,26 +41,33 @@ class Projects extends React.Component {
     this.props.actions.fetch();
   }
 
+  /*
+Detects the bottom of a page
+Used to *trigger* a fetch for more projects
+  */
   isBottom(el) {
     return el.getBoundingClientRect().bottom <= window.innerHeight;
   }
-  
+
+  // tracks scrolling *duh
   trackScrolling = () => {
-    if(this.props.actionAttempt !== "in-progress"){
-      const wrappedElement = document.getElementById('wrapper'); 
-      if (this.isBottom(wrappedElement) && this.state.fetchedTriggered === false ) {
+    if (this.props.actionAttempt !== "in-progress") {
+      const wrappedElement = document.getElementById("wrapper");
+      if (
+        this.isBottom(wrappedElement) &&
+        this.state.fetchedTriggered === false
+      ) {
         this.props.actions.fetch(this.props.next);
-        this.setState({ fetchedTriggered: true })
-      }else{
-        this.setState({ fetchedTriggered: false})
+        this.setState({ fetchedTriggered: true });
+      } else {
+        this.setState({ fetchedTriggered: false });
       }
     }
   };
 
   componentDidMount() {
- 
-    document.addEventListener('scroll', this.trackScrolling);
- 
+    document.addEventListener("scroll", this.trackScrolling);
+    // create dom option elements after page's loaded to be injected into a select element as children
     this.setState({
       filterOptions: Object.keys(colors).map((colorKey, index) => {
         return (
@@ -74,21 +79,33 @@ class Projects extends React.Component {
     });
   }
 
+  // basically keeps everything as it was, when you decided to execute a function a data manipulating function with side effects
   componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
       let projects;
-      if(this.state.filtered){
-        const filtered = _.filter(nextProps.projects, [this.state.filterName, this.state.filterValue]);
-        if(this.state.sorted ){
-          projects = _.orderBy(this.state.projects, [this.state.sortName], [this.state.sortValue]);
-        }else{
+      if (this.state.filtered) {
+        const filtered = _.filter(nextProps.projects, [
+          this.state.filterName,
+          this.state.filterValue
+        ]);
+        if (this.state.sorted) {
+          projects = _.orderBy(
+            this.state.projects,
+            [this.state.sortName],
+            [this.state.sortValue]
+          );
+        } else {
           projects = filtered;
         }
-        this.setState({ projects })
-      }else{
-        if(this.state.sorted ){
-          projects = _.orderBy(nextProps.projects, [this.state.sortName], [this.state.sortValue]);
-        }else{
+        this.setState({ projects });
+      } else {
+        if (this.state.sorted) {
+          projects = _.orderBy(
+            nextProps.projects,
+            [this.state.sortName],
+            [this.state.sortValue]
+          );
+        } else {
           projects = nextProps.projects;
         }
         this.setState({
@@ -98,6 +115,7 @@ class Projects extends React.Component {
     }
   }
 
+  // lodash sorting because -lodash
   handleSort = e => {
     const name = e.target.getAttribute("name"),
       value = e.target.value;
@@ -108,24 +126,28 @@ class Projects extends React.Component {
       sorted: true,
       sortName: name,
       sortValue: value
-
     });
   };
 
+  // async-ish filter function that updates state with filtered data from a single source of truth, - the props
   handleFilter = e => {
     const name = e.target.getAttribute("name"),
       value = e.target.value;
 
+    // resets the values of all refs in this component to nothing - "" on click
     Object.keys(this.refs).map(key => {
       return (this.refs[key].value = "");
     });
 
+    // if value of calling element is all return all
     if (value === "all") {
       return this.setState({
         projects: this.props.projects,
         filtered: false
       });
     }
+
+    // lodash filter because -lodash
     const filtered = _.filter(this.props.projects, [name, value]);
 
     this.setState({
@@ -135,10 +157,9 @@ class Projects extends React.Component {
       filterValue: value
     });
   };
-
-
-  componentWillUnmount(){
-    document.removeEventListener('scroll', this.trackScrolling);
+  // remove listeners because you have to
+  componentWillUnmount() {
+    document.removeEventListener("scroll", this.trackScrolling);
   }
 
   render() {
@@ -219,12 +240,12 @@ class Projects extends React.Component {
         </div>
 
         <div className="xs-12">
-          { projects }
-          { this.props.actionAttempt === "failed" && <Failed/> }
+          {projects}
+          {this.props.actionAttempt === "failed" && <Failed />}
         </div>
 
         <div className="xs-12">
-          { this.props.actionAttempt === "in-progress" && <InProgress/> }
+          {this.props.actionAttempt === "in-progress" && <InProgress />}
         </div>
       </Wrapper>
     );
@@ -244,4 +265,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Projects);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Projects);

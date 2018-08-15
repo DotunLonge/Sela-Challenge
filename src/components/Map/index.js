@@ -2,44 +2,43 @@ import React, { Component } from "react";
 import GeoSuggest from "react-geosuggest";
 import Marker from "../../assets/icons/marker.svg";
 import MapView from "./map-view";
-import { Wrapper,Spinner } from "./map-section.style";
+import { Wrapper, Spinner } from "./map-section.style";
 import { connect } from "react-redux";
 import { fetchForMaps } from "../../store/actionCreators/project";
 
-const Failed = ()=>{
+const Failed = () => {
   return (
     <div className="failed">
-    <h1>
-      Nothing To Show. <p>Most Likely Server Issues</p>
-    </h1>
-  </div>
-  )
-}
+      <h1>
+        Nothing To Show. <p>Most Likely Server Issues</p>
+      </h1>
+    </div>
+  );
+};
 
-const InProgress = ()=>{
+const InProgress = () => {
   return (
     <div className="in-progress">
-     <Spinner >
-      <div className="spinner">
-        <div className="bounce1"></div>
-        <div className="bounce2"></div>
-        <div className="bounce3"></div>
-     
-        <div className="bounce2"></div>
-        <div className="bounce3"></div>
-        <div className="bounce2"></div>
-     
-      </div>
-  </Spinner>
+      <Spinner>
+        <div className="spinner">
+          <div className="bounce1" />
+          <div className="bounce2" />
+          <div className="bounce3" />
+
+          <div className="bounce2" />
+          <div className="bounce3" />
+          <div className="bounce2" />
+        </div>
+      </Spinner>
     </div>
-  )
-}
+  );
+};
 
 class MapSection extends Component {
   state = {};
 
-  componentWillMount(){
-    this.props.dispatch( fetchForMaps() )
+  componentWillMount() {
+    this.props.dispatch(fetchForMaps());
   }
 
   onSuggestSelect = suggest => {
@@ -72,8 +71,8 @@ class MapSection extends Component {
 
         <div className="xs-12" id="map-section">
           <MapView center={this.state.center} projects={projects} />
-          { actionAttempt === "in-progress" && <InProgress/> }
-          { actionAttempt === "failed" && <Failed/> }
+          {actionAttempt === "in-progress" && <InProgress />}
+          {actionAttempt === "failed" && <Failed />}
         </div>
       </Wrapper>
     );
@@ -83,7 +82,7 @@ class MapSection extends Component {
 const mapStateToProps = state => {
   return {
     projects: state.app.mapSection.projectDataForMaps,
-    actionAttempt : state.app.mapSection.action.attempt
+    actionAttempt: state.app.mapSection.action.attempt
   };
 };
 

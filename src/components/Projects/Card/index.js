@@ -7,14 +7,17 @@ import budget from "../../../assets/icons/money.svg";
 export default ({ project }) => {
   const percent = project.completionPercentage;
 
+  // create an array of image elements with contractor pictures
   const contractors = project.contractors.map((contractor, index) => {
     return <img src={contractor.avatarUrl} alt="contractor" key={index} />;
   });
 
+  // dollar formatter
   const formatter = number => {
     return "$" + number.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
   };
 
+  // show an alert box of date related information of the project
   const alertOtherInfo = () => {
     alert(
       "Start Date : " +
@@ -60,7 +63,8 @@ export default ({ project }) => {
 
           <div className="xs-12">
             <p className="description">
-              {project.description} ...<Link to="#">Read more</Link>
+              {project.description} ...
+              <Link to="#">Read more</Link>
             </p>
           </div>
 
